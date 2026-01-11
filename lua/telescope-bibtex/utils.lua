@@ -54,7 +54,7 @@ M.parse_entry = function(entry)
       parsed.type = string.match(line, '^@(.-){')
       parsed.label = string.match(line, '^@.+{(.-),$')
     end
-    for field, val in string.gmatch(line, '(%w+)%s*=%s*["{]*(.-)["}],?$') do
+    for field, val in string.gmatch(line, '%s*(%w+)%s*=%s*["{]?(.-)["}]?,?$') do
       parsed[string.lower(field)] = M.clean_str(val, '[%{|%}]')
     end
   end
